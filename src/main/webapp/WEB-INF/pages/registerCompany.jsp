@@ -43,7 +43,7 @@
 
         </nav>
       <header>Hire the best freelancers for any job, online. Registration Here</header>
-      <form id="registrationForm" action="registercompany" class="form" method="post">
+      <form id="registrationForm" action="registercompany" class="form" method="post" enctype="multipart/form-data">
     <div class="input-box">
         <label>Personal Name/Organization Name</label>
         <input type="text" placeholder="Enter name" required name="name" pattern="[A-Za-z\s]{1,}" title="Name should only contain letters and spaces." />
@@ -64,11 +64,11 @@
         <input type="url" placeholder="Enter Company Website" name="website" required pattern="https?://.+" title="Enter a valid URL starting with http:// or https://." />
     </div>
 
-<!--  
+
     <div class="input-box">
         <label>Company Photo or Banner</label>
         <input type="file" name="filename" required accept="image/*" title="Please upload a valid image file." />
-    </div> -->
+    </div>
 
     <div class="input-box">
         <label>Password</label>

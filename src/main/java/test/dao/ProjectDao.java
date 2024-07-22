@@ -19,7 +19,7 @@ public class ProjectDao {
 
 	public void registercompany(Company c1) {
 		
-		t1.update("insert into company (name,email,number,website,password,cpassword) values ('"+c1.getName()+"','"+c1.getEmail()+"','"+c1.getNumber()+"','"+c1.getWebsite()+"','"+c1.getPassword()+"','"+c1.getCpassword()+"')");
+		t1.update("insert into company (name,email,number,website,password,cpassword,profilec) values ('"+c1.getName()+"','"+c1.getEmail()+"','"+c1.getNumber()+"','"+c1.getWebsite()+"','"+c1.getPassword()+"','"+c1.getCpassword()+"','"+c1.getProfilec()+"')");
 		
 	}
 

@@ -12,6 +12,16 @@ public class Company {
 	
 	private String website;
 	
+	private String profilec;
+	
+	public String getProfilec() {
+		return profilec;
+	}
+
+	public void setProfilec(String profilec) {
+		this.profilec = profilec;
+	}
+
 	private String password;
 	
 	private String cpassword;
