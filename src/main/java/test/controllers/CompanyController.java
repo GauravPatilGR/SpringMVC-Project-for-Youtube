@@ -3,6 +3,7 @@ package test.controllers;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,5 +65,32 @@ public class CompanyController {
 		return "loginCompany";
 		
 	}
+	
+	//mapping of Login Company
+	@RequestMapping(value = "/logincompany",method = RequestMethod.POST)
+	public String logincompany(@RequestParam("email")String email,@RequestParam("password")String password) {
+		
+	List<Company> companydata=pd.checklogindetails(email,password);
+	
+	if(companydata.isEmpty()) {
+		
+		return "loginCompany";
+	}
+	
+	return "homecompany";
+		
+	}
+	
+	
+	//mapping of home Company
+	@RequestMapping("/homecompany")
+	public String homepagecompany() {
+		
+		
+		return "homecompany";
+	}
+	
+	
+	
 
 }

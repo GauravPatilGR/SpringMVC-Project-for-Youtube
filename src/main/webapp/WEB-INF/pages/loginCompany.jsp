@@ -33,7 +33,7 @@
           </a>
     
       <header>Welcome Back to ProjectPluse Login Here</header>
-     <form id="loginForm" action="logindata" class="form" method="post">
+     <form id="loginForm" action="logincompany" class="form" method="post">
     <div class="input-box">
         <label>Email Address</label>
         <input type="email" placeholder="Enter Your email address" name="email" required />
