@@ -72,39 +72,25 @@
 
     <div class="input-box">
         <label>Password</label>
-        <input type="password" name="password" placeholder="Enter Password" required pattern=".{8,}" title="Password must be at least 8 characters long." />
+        <input type="password" name="password" placeholder="Enter Password"  title="Password must be at least 8 characters long." />
     </div>
 
     <div class="input-box">
         <label>Confirm Password</label>
-        <input type="password" name="cpassword" placeholder="Enter Confirm Password" required pattern=".{8,}" title="Password must be at least 8 characters long." />
+        <input type="password" name="cpassword" placeholder="Enter Confirm Password"  title="Password must be at least 8 characters long." />
     </div>
 
     <button type="submit">Register</button>
+    <p style="color:red">${registererror}</p>
     <br>
-    <a href="loginc">
+    <a href="loginCompany">
         <button type="button">Login</button>
     </a>
     Already Have Account?
 </form>
     </section>
     
-    <script>
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    // Get the form elements
-    var form = event.target;
-    var password = form.elements['password'].value;
-    var confirmPassword = form.elements['confirmpassword'].value;
-
-    // Check if passwords match
-    if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        event.preventDefault(); // Prevent form submission
-    }
-
-    // Additional JavaScript validation can be added here
-});
-</script>
+  
   
 
 <style>/* Import Google font - Poppins */

@@ -46,6 +46,8 @@
     </div>
 
     <button type="submit">Login</button>
+     <p style="color:green;">${registermessage}</p>
+     <p style="color:red;">${loginkey}</p>
     <br>
     <a href="registerCompany">
         <button type="button">Register Here</button>

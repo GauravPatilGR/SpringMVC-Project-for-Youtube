@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +39,10 @@ public class CompanyController {
 	
 	//Registration Mapping or Handler
 	@RequestMapping(value = "/registercompany" ,method = RequestMethod.POST)
-	public String registerCompanydata(@ModelAttribute("c1") Company c1,@RequestParam("filename") MultipartFile filename) throws IOException {
+	public String registerCompanydata(@ModelAttribute("c1") Company c1,@RequestParam("filename") MultipartFile filename,ModelMap mm) throws IOException {
+		
+		if(c1.getPassword().equals(c1.getCpassword()))
+		{
 		
 		//for file name
 		String f=filename.getOriginalFilename();
@@ -62,17 +66,27 @@ public class CompanyController {
 		
 		pd.registercompany(c1);
 		
+		mm.addAttribute("registermessage","Registration Succesfully Completed Login Now");
+		
 		return "loginCompany";
+		
+		}
+		
+		mm.addAttribute("registererror","Something Went Wrong!");
+		
+		return "registerCompany";
 		
 	}
 	
 	//mapping of Login Company
 	@RequestMapping(value = "/logincompany",method = RequestMethod.POST)
-	public String logincompany(@RequestParam("email")String email,@RequestParam("password")String password) {
+	public String logincompany(@RequestParam("email")String email,@RequestParam("password")String password,ModelMap mm) {
 		
 	List<Company> companydata=pd.checklogindetails(email,password);
 	
 	if(companydata.isEmpty()) {
+		
+		mm.put("loginkey", "Something Went Wrong Check Your Details!");
 		
 		return "loginCompany";
 	}
