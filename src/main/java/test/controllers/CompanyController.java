@@ -5,7 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.SqlReturnResultSet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -78,10 +81,13 @@ public class CompanyController {
 		
 	}
 	
+	
+	
 	//mapping of Login Company
 	@RequestMapping(value = "/logincompany",method = RequestMethod.POST)
-	public String logincompany(@RequestParam("email")String email,@RequestParam("password")String password,ModelMap mm) {
-		
+	public String logincompany(@RequestParam("email")String email,@RequestParam("password")String password,ModelMap mm,HttpSession h1) {
+	
+	//Company Data Present
 	List<Company> companydata=pd.checklogindetails(email,password);
 	
 	if(companydata.isEmpty()) {
@@ -91,18 +97,47 @@ public class CompanyController {
 		return "loginCompany";
 	}
 	
-	return "homecompany";
+	h1.setAttribute("SessionData", email);
+	
+	//Company data key
+	h1.setAttribute("Companydata", companydata);
+	
+	return "redirect:/homecompany";
 		
 	}
 	
 	
-	//mapping of home Company
+	//mapping of home Company page
 	@RequestMapping("/homecompany")
-	public String homepagecompany() {
+	public String homepagecompany(HttpSession h1,ModelMap mm) {
 		
 		
-		return "homecompany";
+	String sessionKey=	(String) h1.getAttribute("SessionData");
+	
+	if(sessionKey==null)
+	{
+		return "loginCompany";
 	}
+	
+                    //value of data
+    List<Company>  companydatalist=(List<Company>) h1.getAttribute("Companydata");
+                     //key of companydata
+    mm.addAttribute("companykey",companydatalist);
+ 
+	return "homecompany";
+	}
+	
+	
+	@RequestMapping("/logoutCompany")
+	public String logoutCompany (HttpSession h1) {
+		
+		h1.invalidate();
+		
+		return"loginCompany";
+    }
+	
+	
+	
 	
 	
 	

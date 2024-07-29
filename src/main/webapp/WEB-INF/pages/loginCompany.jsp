@@ -42,7 +42,7 @@
     <br>
     <div class="input-box">
         <label>Enter Password</label>
-        <input type="password" placeholder="Enter Your Password" name="password" required pattern=".{8,}" title="Password must be at least 8 characters long." />
+        <input type="password" placeholder="Enter Your Password" name="password" title="Password must be at least 8 characters long." />
     </div>
 
     <button type="submit">Login</button>
@@ -56,27 +56,6 @@
 </form>
     </section>
  
-<script>
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    var form = event.target;
-    var email = form.elements['email'].value;
-    var password = form.elements['password'].value;
-
-    // Simple email format validation (additional to HTML5 email type)
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert('Please enter a valid email address.');
-        event.preventDefault(); // Prevent form submission
-        return;
-    }
-
-    // Password length validation (additional to HTML5 pattern)
-    if (password.length < 8) {
-        alert('Password must be at least 8 characters long.');
-        event.preventDefault(); // Prevent form submission
-    }
-});
-</script>
 
 
 <style>/* Import Google font - Poppins */
