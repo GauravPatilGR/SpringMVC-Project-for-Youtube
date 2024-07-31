@@ -53,12 +53,13 @@
             
          
           
-    <c:forEach items="${kk}" var="e">
-        <div style="width: 60px; height: 60px; border-radius: 50%; border: 1px solid white; overflow: hidden; margin-right: 10px;">
-            <img class="profilecimage" alt="" src="./files/webimages/${e.profileimg}" style="width: 100%; height:100% auto;">
+     
+        <c:forEach items="${companykey}" var="e">
+         <div style="width: 60px; height: 60px; border-radius: 50%; border: 1px solid white; overflow: hidden; margin-right: 10px;">
+            <img class="profilecimage" alt="" src="./files/webimages/${e.profilec}" style="width: 100%; height:100% auto;">
         </div>    
-        <h4>${e.name}</h6>
-    </c:forEach>
+        <h4>${e.name}</h4>
+        </c:forEach>
    
 
           

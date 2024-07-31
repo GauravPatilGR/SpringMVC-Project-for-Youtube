@@ -119,6 +119,8 @@ public class CompanyController {
 		return "loginCompany";
 	}
 	
+	
+	//Company Data
                     //value of data
     List<Company>  companydatalist=(List<Company>) h1.getAttribute("Companydata");
                      //key of companydata
@@ -135,6 +137,21 @@ public class CompanyController {
 		
 		return"loginCompany";
     }
+	
+	@RequestMapping("/profilec")
+	public String companyprofile(HttpSession h1,ModelMap mm) {
+		
+		
+		
+		//Company Data
+        //value of data
+     List<Company>  companydatalist=(List<Company>) h1.getAttribute("Companydata");
+         //key of companydata
+     mm.addAttribute("companykey",companydatalist);
+		
+		
+		return "profilec";
+	}
 	
 	
 	
