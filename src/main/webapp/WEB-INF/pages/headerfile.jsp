@@ -104,7 +104,7 @@
              
             </ul>
             <div class="user_option">
-              <a href="logutc">
+              <a href="logoutCompany">
                
                
                 <i class="fa-solid fa-power-off"></i> &nbsp;Logout

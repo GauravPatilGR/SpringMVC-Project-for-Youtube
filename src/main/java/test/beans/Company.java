@@ -14,6 +14,16 @@ public class Company {
 	
 	private String profilec;
 	
+	private String about;
+	
+	public String getAbout() {
+		return about;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
+
 	public String getProfilec() {
 		return profilec;
 	}

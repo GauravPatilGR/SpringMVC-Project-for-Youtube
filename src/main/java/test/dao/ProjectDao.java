@@ -47,6 +47,7 @@ public class ProjectDao {
 				c1.setPassword(rs.getString(6));
 				c1.setCpassword(rs.getString(7));
 				c1.setProfilec(rs.getString(8));
+				c1.setAbout(rs.getString(9));
 				
 				
 				
@@ -57,6 +58,12 @@ public class ProjectDao {
 			
 			
 		});
+		
+	}
+
+	public void updatedataofprofile(Company c1) {
+		
+		t1.update("update company set name='"+c1.getName()+"',email='"+c1.getEmail()+"',number='"+c1.getNumber()+"',website='"+c1.getWebsite()+"',profilec='"+c1.getProfilec()+"',about='"+c1.getAbout()+"' where id='"+c1.getId()+"'");
 		
 	}
 

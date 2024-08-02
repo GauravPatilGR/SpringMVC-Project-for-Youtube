@@ -20,12 +20,14 @@
 
 
 <c:forEach items="${companykey}" var="h">
-<form action="updateinfoc" method="post">
+<form action="updateprofilec" method="post" enctype="multipart/form-data">
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="./files/webimages/${h.profilec}"><span class="font-weight-bold">${h.name}</span><span class="text-black-50">${h.email}</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="./files/webimages/${h.profilec}"><span class="font-weight-bold">${h.name}</span><span class="text-black-50">${h.email}</span><span> </span><br><label>Upload Profile Picture</label><input type="file" name="filename"><br></div>
+             
         </div>
+      
         
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -39,12 +41,12 @@
                     
                 </div>
                 
-                <input type="hidden" class="form-control" placeholder="first name" name="id" value="${e.id}">
+                <input type="hidden" class="form-control" placeholder="first name" name="id" value="${h.id}">
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="Number of Company" name="number" value="${h.number}"></div>
                     <div class="col-md-6"><label class="labels">Email Address</label><input type="text" class="form-control" placeholder="Email of Company" name="email"  value="${h.email}"></div>
                    <div class="col-md-12"><label class="labels">Website</label><input type="text" class="form-control" placeholder="Website of Company" name="website" value="${h.website}"></div>
-                    <div class="col-md-12"><label class="labels">About us</label> <input type="text"  class="form-control"   placeholder="About Company" name="about" value=""  style="height:100px;"></div>
+                    <div class="col-md-12"><label class="labels">About us</label> <input type="text"  class="form-control"   placeholder="About Company" name="about" value="${h.about}"  style="height:100px;"></div>
               
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
                 &nbsp;

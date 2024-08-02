@@ -46,6 +46,8 @@ public class CompanyController {
 		
 		if(c1.getPassword().equals(c1.getCpassword()))
 		{
+			
+			//File Upload Code Start
 		
 		//for file name
 		String f=filename.getOriginalFilename();
@@ -63,6 +65,9 @@ public class CompanyController {
 		bf.close();
 		
 		c1.setProfilec(f);
+		
+		
+		//File Upload Code End
 		
 		
 		
@@ -144,13 +149,44 @@ public class CompanyController {
 		
 		
 		//Company Data
-        //value of data
+                   //value of data
      List<Company>  companydatalist=(List<Company>) h1.getAttribute("Companydata");
-         //key of companydata
+                    //key of companydata
      mm.addAttribute("companykey",companydatalist);
 		
 		
 		return "profilec";
+	}
+	
+	@RequestMapping(value = "/updateprofilec",method = RequestMethod.POST)
+	public String updateprofile(@ModelAttribute("c1") Company c1, @RequestParam("filename") MultipartFile filename,ModelMap mm) throws IOException {
+		
+		
+		        //for file name
+				String f=filename.getOriginalFilename();
+				
+				//for file Storage
+				String path="C:\\Users\\gaura\\eclipse-workspace\\ProjectSpringMVC_Java1\\src\\main\\webapp\\files\\webimages";
+				
+				//Concate of file name and file storage
+				BufferedOutputStream bf = new BufferedOutputStream(new FileOutputStream(path+"/"+f));
+				
+				byte b []=filename.getBytes();
+				
+				bf.write(b);
+				
+				bf.close();
+				
+				c1.setProfilec(f);
+				
+				pd.updatedataofprofile(c1);
+				
+				mm.addAttribute("profilem","Profile is Sucessfully Updated Login Now");
+				
+				return "loginCompany";
+				
+		
+		
 	}
 	
 	
