@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.RowMapperResultSetExtractor;
 
 import test.beans.Company;
+import test.beans.Freelancer;
 
 public class ProjectDao {
 	
@@ -64,6 +65,13 @@ public class ProjectDao {
 	public void updatedataofprofile(Company c1) {
 		
 		t1.update("update company set name='"+c1.getName()+"',email='"+c1.getEmail()+"',number='"+c1.getNumber()+"',website='"+c1.getWebsite()+"',profilec='"+c1.getProfilec()+"',about='"+c1.getAbout()+"' where id='"+c1.getId()+"'");
+		
+	}
+
+	public void registerfreelancer(Freelancer c1) {
+		
+		
+		t1.update("insert into freelancer (name,email,number,date,linkedin,education,profilef,charge,gender,skills,password,cpassword) values ('"+c1.getName()+"','"+c1.getEmail()+"','"+c1.getNumber()+"','"+c1.getDate()+"','"+c1.getLinkedin()+"','"+c1.getEducation()+"','"+c1.getProfilef()+"','"+c1.getCharge()+"','"+c1.getGender()+"','"+c1.getSkills()+"','"+c1.getPassword()+"','"+c1.getCpassword()+"') ");
 		
 	}
 

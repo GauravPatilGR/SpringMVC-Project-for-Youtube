@@ -57,7 +57,7 @@
               </li>
             
               <li class="nav-item">
-                <a class="nav-link" href="loginf">Login As Freelancer &nbsp; <i class="fa-solid fa-users"></i></a>
+                <a class="nav-link" href="registerfreelancer">Login As Freelancer &nbsp; <i class="fa-solid fa-users"></i></a>
               </li>
             </ul>
             <div class="user_option">
