@@ -1,8 +1,10 @@
 package test.controllers;
 
+
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ public class FreelancerController {
 	@Autowired
 	ProjectDao pd;
 	
+	
+	//Mapping for Register Page
 	@RequestMapping("/registerfreelancer")
 	public String Registerpage() {
 		
@@ -28,6 +32,14 @@ public class FreelancerController {
 		return "registerfreelancer";
 	}
 	
+	//Mapping for Login Page
+	@RequestMapping("/loginfreelancer")
+	public String loginpage() {
+		
+		return "loginfreelancer";
+	}
+	
+	//Mapping for Register Freelancer
 	@RequestMapping(value = "/registerfreelancerdata",method = RequestMethod.POST)
 	public String registerdataoffreelancer(@ModelAttribute("c1") Freelancer c1,@RequestParam("filnamef")MultipartFile filename) throws IOException {
 		
@@ -54,6 +66,31 @@ public class FreelancerController {
 		
 		
 		return "registerfreelancer";
+	}
+	
+	//Mapping for Login Freelancer
+	@RequestMapping(value = "/loginfreelancer",method = RequestMethod.POST)
+	public String loginfreelancerdata(@RequestParam("email")String email,@RequestParam("password") String password) {
+		
+		
+	List<Freelancer> freelancerdata =pd.loginfreelancerdetails(email,password);
+	
+	if(freelancerdata.isEmpty())
+	{
+		return "loginfreelancer";
+	}
+	
+	return "homefreelancer";
+		
+		
+	}
+	
+	//Mapping for Freelancer Home Page
+	@RequestMapping("/homefreelancer")
+	public String homefreelancer() {
+		
+		return "homefreelancer";
+		
 	}
 
 }

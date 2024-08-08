@@ -170,7 +170,7 @@
     </div>
     <button type="submit">Register</button>
     <p style="color:red;">${messagee}</p>
-    <br> <a href="loginf"><button type="button">Login</button></a> Already Have Account?
+    <br> <a href="loginfreelancer"><button type="button">Login</button></a> Already Have Account?
 </form>
     
     </section>

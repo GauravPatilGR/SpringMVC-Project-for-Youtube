@@ -75,4 +75,34 @@ public class ProjectDao {
 		
 	}
 
+	public List<Freelancer> loginfreelancerdetails(String email, String password) {
+		
+		return t1.query("select *from freelancer where email='"+email+"' and password='"+password+"'", new RowMapper<Freelancer> () {
+
+			@Override
+			public Freelancer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				Freelancer f1= new Freelancer();
+				
+				f1.setId(rs.getInt(1));
+				f1.setName(rs.getString(2));
+				f1.setEmail(rs.getString(3));
+				f1.setNumber(rs.getString(4));
+				f1.setDate(rs.getDate(5));
+				f1.setLinkedin(rs.getString(6));
+				f1.setEducation(rs.getString(7));
+				f1.setProfilef(rs.getString(8));
+				f1.setCharge(rs.getString(9));
+				f1.setGender(rs.getString(10));
+				f1.setSkills(rs.getString(11));
+				
+				return f1;
+			}
+			
+			
+			
+		});
+		
+	}
+
 }
