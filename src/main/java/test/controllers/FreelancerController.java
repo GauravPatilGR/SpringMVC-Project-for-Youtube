@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,8 +42,13 @@ public class FreelancerController {
 	
 	//Mapping for Register Freelancer
 	@RequestMapping(value = "/registerfreelancerdata",method = RequestMethod.POST)
-	public String registerdataoffreelancer(@ModelAttribute("c1") Freelancer c1,@RequestParam("filnamef")MultipartFile filename) throws IOException {
+	public String registerdataoffreelancer(@ModelAttribute("c1") Freelancer c1,@RequestParam("filnamef")MultipartFile filename,@RequestParam("email") String email,ModelMap mm) throws IOException {
 		
+		 //Check Dublicate Email
+		  List<Freelancer> freelanceremaildata  = pd.checkemailfreelancer(email);
+		  
+		  if(c1.getPassword().equals(c1.getCpassword()) && freelanceremaildata.isEmpty())
+		  {
 		
 		        //for file name
 				String f=filename.getOriginalFilename();
@@ -63,20 +69,28 @@ public class FreelancerController {
 				
 				
 				pd.registerfreelancer(c1);
+				
+				mm.addAttribute("messagelogin","Registration Succesfully Done Login Now!");
+				
+				return "loginfreelancer";
+				
+				
+		  }
 		
-		
+		mm.addAttribute("messageerror","Check your password & confirm password or Email");
 		return "registerfreelancer";
 	}
 	
 	//Mapping for Login Freelancer
 	@RequestMapping(value = "/loginfreelancer",method = RequestMethod.POST)
-	public String loginfreelancerdata(@RequestParam("email")String email,@RequestParam("password") String password) {
+	public String loginfreelancerdata(@RequestParam("email")String email,@RequestParam("password") String password,ModelMap mm) {
 		
 		
 	List<Freelancer> freelancerdata =pd.loginfreelancerdetails(email,password);
 	
 	if(freelancerdata.isEmpty())
 	{
+		mm.addAttribute("messageloginfreelancer","you Don't Have An Account Register Now");
 		return "loginfreelancer";
 	}
 	

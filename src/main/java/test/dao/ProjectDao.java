@@ -105,4 +105,22 @@ public class ProjectDao {
 		
 	}
 
+	public List<Freelancer> checkemailfreelancer(String email) {
+		
+		return t1.query("select *from freelancer where email='"+email+"'", new RowMapper<Freelancer>() {
+
+			@Override
+			public Freelancer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				 
+				Freelancer f1= new Freelancer();
+				f1.setEmail(rs.getString(3));
+				
+				
+				return f1;
+			}
+			
+			
+		});
+	}
+
 }

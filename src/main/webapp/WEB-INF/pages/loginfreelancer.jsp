@@ -43,8 +43,8 @@
         <input type="password" placeholder="Enter Your Password" name="password" required />
     </div>
     <button type="submit">Login</button>
-    <p style="color:green;">${message}</p>
-    <p style="color:red;">${loginerror}</p>
+    <p style="color:green;">${messagelogin}</p>
+    <p style="color:red;">${messageloginfreelancer}</p>
     <br>
     <a href="registerfreelancer"><button type="button">Register Here</button></a>
     Don't have an account?

@@ -169,7 +169,8 @@
         </div>
     </div>
     <button type="submit">Register</button>
-    <p style="color:red;">${messagee}</p>
+    <p style="color:red">${messageerror}</p>
+   
     <br> <a href="loginfreelancer"><button type="button">Login</button></a> Already Have Account?
 </form>
     
