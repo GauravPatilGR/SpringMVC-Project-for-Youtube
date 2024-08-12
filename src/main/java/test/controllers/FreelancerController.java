@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -77,22 +79,26 @@ public class FreelancerController {
 				
 		  }
 		
-		mm.addAttribute("messageerror","Check your password & confirm password or Email");
+		mm.addAttribute("messageerror","Check your password & confirm password or Email Alredy Present in Database.!");
 		return "registerfreelancer";
 	}
 	
 	//Mapping for Login Freelancer
 	@RequestMapping(value = "/loginfreelancer",method = RequestMethod.POST)
-	public String loginfreelancerdata(@RequestParam("email")String email,@RequestParam("password") String password,ModelMap mm) {
+	public String loginfreelancerdata(@RequestParam("email")String email,@RequestParam("password") String password,ModelMap mm,HttpSession h1) {
 		
 		
 	List<Freelancer> freelancerdata =pd.loginfreelancerdetails(email,password);
 	
 	if(freelancerdata.isEmpty())
 	{
-		mm.addAttribute("messageloginfreelancer","you Don't Have An Account Register Now");
+		mm.addAttribute("messageloginfreelancer","you Don't Have An Account Register Now..");
 		return "loginfreelancer";
 	}
+	
+	
+	h1.setAttribute("freelanceremail", email);
+	
 	
 	return "homefreelancer";
 		
@@ -101,10 +107,33 @@ public class FreelancerController {
 	
 	//Mapping for Freelancer Home Page
 	@RequestMapping("/homefreelancer")
-	public String homefreelancer() {
+	public String homefreelancer(HttpSession h1) {
+		
+	String freelancersession=	(String) h1.getAttribute("freelanceremail");
+	
+	if(freelancersession==null)
+	{
+	    return	"loginfreelancer";
+	}
 		
 		return "homefreelancer";
 		
+	}
+	
+	@RequestMapping("/logoutfreelancer")
+	public String logoutfreelancer(HttpSession h1) {
+		
+		h1.invalidate();
+		
+		return "loginfreelancer";
+		
+	}
+	
+	@RequestMapping("/headerfreelancer")
+	public String headerfreelancer() {
+		
+		
+		return "headerfreelancer";
 	}
 
 }
