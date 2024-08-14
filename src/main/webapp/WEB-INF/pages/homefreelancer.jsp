@@ -51,10 +51,10 @@
                 EARN MONEY FROM FREELANCING<br>
                     ONLINE
                     </h1>
-                    <c:forEach  items="${kkk}" var="e">
-                    <p>WELCOME BACK  ${e.fname} </p>
-                  
-                   </c:forEach>
+                    <c:forEach items="${freelancerdata}" var="e">                
+                    <p>WELCOME BACK ${e.name}</p>
+                    </c:forEach>
+                 
                    
                     <div class="btn-box">
                       <a href="Explorejobs" class="btn-1">
@@ -105,10 +105,9 @@
                 EARN MONEY FROM FREELANCING<br>
                     ONLINE
                     </h1>
-                    <c:forEach  items="${kkk}" var="e">
-                    <p>WELCOME BACK  ${e.fname} </p>
-                  
-                   </c:forEach>
+                  <c:forEach items="${freelancerdata}" var="e">                
+                    <p>WELCOME BACK ${e.name}</p>
+                    </c:forEach>
                    
                     <div class="btn-box">
                      <a href="Explorejobs" class="btn-1">
@@ -156,10 +155,9 @@
                 EARN MONEY FROM FREELANCING<br>
                     ONLINE
                     </h1>
-                    <c:forEach  items="${kkk}" var="e">
-                    <p>WELCOME BACK  ${e.fname} </p>
-                  
-                   </c:forEach>
+                    <c:forEach items="${freelancerdata}" var="e">                
+                    <p>WELCOME BACK ${e.name}</p>
+                    </c:forEach>
                    
                     <div class="btn-box">
                      <a href="Explorejobs" class="btn-1">

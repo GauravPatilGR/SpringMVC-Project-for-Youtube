@@ -87,7 +87,7 @@ public class FreelancerController {
 	@RequestMapping(value = "/loginfreelancer",method = RequestMethod.POST)
 	public String loginfreelancerdata(@RequestParam("email")String email,@RequestParam("password") String password,ModelMap mm,HttpSession h1) {
 		
-		
+		             //Freelancer All Data
 	List<Freelancer> freelancerdata =pd.loginfreelancerdetails(email,password);
 	
 	if(freelancerdata.isEmpty())
@@ -99,15 +99,16 @@ public class FreelancerController {
 	
 	h1.setAttribute("freelanceremail", email);
 	
+	h1.setAttribute("Freelanceralldata", freelancerdata);	
 	
-	return "homefreelancer";
+	return "redirect:/homefreelancer";
 		
 		
 	}
 	
 	//Mapping for Freelancer Home Page
 	@RequestMapping("/homefreelancer")
-	public String homefreelancer(HttpSession h1) {
+	public String homefreelancer(HttpSession h1,ModelMap mm) {
 		
 	String freelancersession=	(String) h1.getAttribute("freelanceremail");
 	
@@ -115,6 +116,13 @@ public class FreelancerController {
 	{
 	    return	"loginfreelancer";
 	}
+	
+	//All Freelancer Data Present 
+	List<Freelancer> freelancerdatalist = (List<Freelancer>) h1.getAttribute("Freelanceralldata");
+	
+	mm.addAttribute("freelancerdata",freelancerdatalist);
+	
+	
 		
 		return "homefreelancer";
 		
@@ -134,6 +142,19 @@ public class FreelancerController {
 		
 		
 		return "headerfreelancer";
+	}
+	
+	@RequestMapping("/profilefreelancer")
+	public String profilefreelancer(HttpSession h1,ModelMap mm) {
+		
+		
+		//All Freelancer Data Present 
+		List<Freelancer> freelancerdatalist = (List<Freelancer>) h1.getAttribute("Freelanceralldata");
+		
+		mm.addAttribute("freelancerdata",freelancerdatalist);
+		
+		
+		return "profilefreelancer";
 	}
 
 }

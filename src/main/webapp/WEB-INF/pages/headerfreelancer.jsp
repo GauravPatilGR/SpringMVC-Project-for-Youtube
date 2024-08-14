@@ -49,17 +49,19 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container">
-          <a class="navbar-brand" href=profilef class="nav-link" style="color:#fff;">
+        
+        
+          <a class="navbar-brand" href="profilefreelancer" class="nav-link" style="color:#fff;">
             
          
           
-    <c:forEach items="${kkk}" var="e">
+        <c:forEach items="${freelancerdata}" var="e">
         <div style="width: 60px; height: 60px; border-radius: 50%; border: 1px solid white; overflow: hidden; margin-right: 10px;">
-            <img class="profilecimage" alt="" src="./files/webimages/${e.fpfile}" style="width: 100%; height:100% auto;">
+            <img class="profilecimage" alt="" src="./files/webimages/${e.profilef}" style="width: 100%; height:100% auto;">
         </div>    
    
-     &nbsp;${e.fname}
-      </c:forEach>
+     &nbsp;${e.name}
+     </c:forEach>
 
           
             
