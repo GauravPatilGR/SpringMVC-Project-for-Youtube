@@ -156,5 +156,37 @@ public class FreelancerController {
 		
 		return "profilefreelancer";
 	}
+	
+	@RequestMapping(value = "/updatefreelabcerprofile",method = RequestMethod.POST)
+	public String updateprofile(@ModelAttribute("c1")Freelancer c1,@RequestParam("filename")MultipartFile filename) throws IOException {
+		
+		
+		 //for file name
+		String f=filename.getOriginalFilename();
+		
+		//for file Storage
+		String path="C:\\Users\\gaura\\eclipse-workspace\\ProjectSpringMVC_Java1\\src\\main\\webapp\\files\\webimages";
+		
+		//Concate of file name and file storage
+		BufferedOutputStream bf = new BufferedOutputStream(new FileOutputStream(path+"/"+f));
+		
+		byte b []=filename.getBytes();
+		
+		bf.write(b);
+		
+		bf.close();
+		
+		c1.setProfilef(f);
+		
+		pd.updatefreelancerprofile(c1);
+		
+		
+		return "loginfreelancer";
+		
+		
+	}
+	
+	
+	
 
 }

@@ -20,12 +20,14 @@
 
 
 <c:forEach items="${freelancerdata}" var="e">
-<form action="updateprofilef" method="post">
+<form action="updatefreelabcerprofile" method="post" enctype="multipart/form-data">
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right" style="background-color:#1a759f; ">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="200px" src="./files/webimages/${e.profilef}" ><span style="color:white;">${e.name}</span><span style="color:white;">${e.email}</span><span> </span></div>
+             <input type="file" name="filename"/>
         </div>
+       
         <div class="col-md-9 border-right" style="background-color:#4ea8de">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -34,17 +36,17 @@
                 
                 
                 <div class="row mt-2">
-                    <div class="col-md-12"><label class="labels">Name of Freelancer</label><input type="text" class="form-control" placeholder="first name" name="fname" value="${e.name}"></div>
+                    <div class="col-md-12"><label class="labels">Name of Freelancer</label><input type="text" class="form-control" placeholder="first name" name="name" value="${e.name}"></div>
                     
                 </div>
                 
                 <input type="hidden" class="form-control" placeholder="first name" name="id" value="${e.id}">
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" name="fphone" value="${e.number}"></div>
-                    <div class="col-md-6"><label class="labels">Email Address</label><input type="text" class="form-control" placeholder="enter address line 1" name="femail"  value="${e.email}"></div>
-                   <div class="col-md-6"><label class="labels">Linkedin</label><input type="text" class="form-control" placeholder="enter address line 2" name="flinkedin" value="${e.linkedin}"></div>
-                    <div class="col-md-6"><label class="labels">Education</label><input type="text" class="form-control" placeholder="enter address line 2" name="feducation" value="${e.education}"></div>
-                     <div class="col-md-6"><label class="labels">Basic Charge for Work</label><input type="text" class="form-control" placeholder="enter address line 2" name="fcharge" value="${e.charge}"></div>
+                    <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" name="number" value="${e.number}"></div>
+                    <div class="col-md-6"><label class="labels">Email Address</label><input type="text" class="form-control" placeholder="enter address line 1" name="email"  value="${e.email}"></div>
+                   <div class="col-md-6"><label class="labels">Linkedin</label><input type="text" class="form-control" placeholder="enter address line 2" name="linkedin" value="${e.linkedin}"></div>
+                    <div class="col-md-6"><label class="labels">Education</label><input type="text" class="form-control" placeholder="enter address line 2" name="education" value="${e.education}"></div>
+                     <div class="col-md-6"><label class="labels">Basic Charge for Work</label><input type="text" class="form-control" placeholder="enter address line 2" name="charge" value="${e.charge}"></div>
                      <div class="col-md-12"><label class="labels">Skills</label><input type="text" class="form-control" placeholder="enter address line 2" name="skills" value="${e.skills}"></div>
                      
                   

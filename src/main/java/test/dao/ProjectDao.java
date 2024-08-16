@@ -123,4 +123,9 @@ public class ProjectDao {
 		});
 	}
 
+	public void updatefreelancerprofile(Freelancer c1) {
+		
+		t1.update("update freelancer set name='"+c1.getName()+"',email='"+c1.getEmail()+"',number='"+c1.getNumber()+"',linkedin='"+c1.getLinkedin()+"',education='"+c1.getEducation()+"',profilef='"+c1.getProfilef()+"',charge='"+c1.getCharge()+"',skills='"+c1.getSkills()+"'");
+	}
+
 }
