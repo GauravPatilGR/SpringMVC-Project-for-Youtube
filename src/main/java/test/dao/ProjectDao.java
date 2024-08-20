@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapperResultSetExtractor;
 
 import test.beans.Company;
 import test.beans.Freelancer;
+import test.beans.postjob;
 
 public class ProjectDao {
 	
@@ -126,6 +127,12 @@ public class ProjectDao {
 	public void updatefreelancerprofile(Freelancer c1) {
 		
 		t1.update("update freelancer set name='"+c1.getName()+"',email='"+c1.getEmail()+"',number='"+c1.getNumber()+"',linkedin='"+c1.getLinkedin()+"',education='"+c1.getEducation()+"',profilef='"+c1.getProfilef()+"',charge='"+c1.getCharge()+"',skills='"+c1.getSkills()+"'");
+	}
+
+	public void postjobdeta(postjob c1) {
+		
+		t1.update("insert into postjob (discription,tittle,skills,budget,role) values ('"+c1.getDiscription()+"','"+c1.getTittle()+"','"+c1.getSkills()+"','"+c1.getBudget()+"','"+c1.getRole()+"')");
+		
 	}
 
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import test.beans.Company;
+import test.beans.postjob;
 import test.dao.ProjectDao;
 
 @Controller
@@ -188,6 +189,23 @@ public class CompanyController {
 		
 		
 	}
+	
+	@RequestMapping("/postjob")
+	public String postjobpage() {
+		
+		return "postjob";
+	}
+	
+	@RequestMapping(value = "/postjob",method = RequestMethod.POST)
+	public String postjobdata(@ModelAttribute("c1") postjob c1){
+		
+		pd.postjobdeta(c1);
+		
+		
+		return "postjob";
+	}
+	
+	
 	
 	
 	
