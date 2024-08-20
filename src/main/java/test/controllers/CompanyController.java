@@ -191,19 +191,28 @@ public class CompanyController {
 	}
 	
 	@RequestMapping("/postjob")
-	public String postjobpage() {
+	public String postjobpage(HttpSession h1,ModelMap mm) {
+		
+		//Company Data
+        //value of data
+List<Company>  companydatalist=(List<Company>) h1.getAttribute("Companydata");
+         //key of companydata
+mm.addAttribute("companykey",companydatalist);
+		
 		
 		return "postjob";
 	}
 	
 	@RequestMapping(value = "/postjob",method = RequestMethod.POST)
-	public String postjobdata(@ModelAttribute("c1") postjob c1){
+	public String postjobdata(@ModelAttribute("c1") postjob c1) {
 		
-		pd.postjobdeta(c1);
 		
+		pd.postdetails(c1);
 		
 		return "postjob";
 	}
+	
+	
 	
 	
 	

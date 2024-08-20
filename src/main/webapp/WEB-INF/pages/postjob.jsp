@@ -237,7 +237,7 @@
     <div class="colums">
         <div class="item">
             <label for="fname">Job description<span>*</span></label>
-            <textarea id="jobDescription" name="discription" rows="4" cols="50"></textarea>
+            <textarea id="jobDescription" name="dicription" rows="4" cols="50"></textarea>
         </div>
         <div class="item">
             <label for="lname">Job Title<span>*</span></label>
@@ -248,7 +248,7 @@
             <label for="address1">Relevant skills needed for this job?<span>*</span></label>
             <br>
             <small>Enter up to 5 skills that best describe your project. Freelancers will use these skills to find projects they are most interested and experienced in.</small>
-            <input id="skills" name="skills" required />
+            <input id="skills" name="skill" required />
             <h6>Suggested skills: MySQL, Web Hosting, Software Testing, Engineering, Software Architecture</h6>
         </div>
         <br><br>
@@ -267,11 +267,11 @@
         </div>
         <div class="question">
             <label>What is your estimated budget or Salary?</label>
-            <input type="text" id="budget" name="budget" placeholder="10000,20000" required title="Please enter a valid number." />
-            <c:forEach items="${kk}" var="e">
-                <input type="hidden" name="jcname" value="${e.name}" />
-                <input type="hidden" name="jcemail" value="${e.email}" />
-            </c:forEach>
+            <input type="text" id="budget" name="salary" placeholder="10000,20000" required title="Please enter a valid number." />
+              <c:forEach items="${companykey}" var="e">
+                <input type="hidden" name="name" value="${e.name}" />
+                <input type="hidden" name="email" value="${e.email}" />
+              </c:forEach>
             <br>
         </div>
         <h4>${messaage}</h4>

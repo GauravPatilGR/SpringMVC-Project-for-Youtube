@@ -1,23 +1,23 @@
 package test.beans;
 
-
-
 public class postjob {
 	
 	private int id;
 	
+	private String name;
 	
-	private String discription;
+	private String  email;
 	
-
+	private String dicription;
+	
 	private String tittle;
 	
-	private String skills;
+	private String skill;
 	
-	private String budget;
+	private String salary;
 	
 	private String role;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -26,12 +26,28 @@ public class postjob {
 		this.id = id;
 	}
 
-	public String getDiscription() {
-		return discription;
+	public String getName() {
+		return name;
 	}
 
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDicription() {
+		return dicription;
+	}
+
+	public void setDicription(String dicription) {
+		this.dicription = dicription;
 	}
 
 	public String getTittle() {
@@ -42,20 +58,20 @@ public class postjob {
 		this.tittle = tittle;
 	}
 
-	public String getSkills() {
-		return skills;
+	public String getSkill() {
+		return skill;
 	}
 
-	public void setSkills(String skills) {
-		this.skills = skills;
+	public void setSkill(String skill) {
+		this.skill = skill;
 	}
 
-	public String getBudget() {
-		return budget;
+	public String getSalary() {
+		return salary;
 	}
 
-	public void setBudget(String budget) {
-		this.budget = budget;
+	public void setSalary(String salary) {
+		this.salary = salary;
 	}
 
 	public String getRole() {
@@ -65,6 +81,5 @@ public class postjob {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
 
 }
