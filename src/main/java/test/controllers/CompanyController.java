@@ -135,7 +135,7 @@ public class CompanyController {
 	return "homecompany";
 	}
 	
-	
+	//Logout Company
 	@RequestMapping("/logoutCompany")
 	public String logoutCompany (HttpSession h1) {
 		
@@ -144,6 +144,7 @@ public class CompanyController {
 		return"loginCompany";
     }
 	
+	//Show Company Profile
 	@RequestMapping("/profilec")
 	public String companyprofile(HttpSession h1,ModelMap mm) {
 		
@@ -159,6 +160,7 @@ public class CompanyController {
 		return "profilec";
 	}
 	
+	//Update Company Profile
 	@RequestMapping(value = "/updateprofilec",method = RequestMethod.POST)
 	public String updateprofile(@ModelAttribute("c1") Company c1, @RequestParam("filename") MultipartFile filename,ModelMap mm) throws IOException {
 		
@@ -190,6 +192,7 @@ public class CompanyController {
 		
 	}
 	
+	//Post Job Page
 	@RequestMapping("/postjob")
 	public String postjobpage(HttpSession h1,ModelMap mm) {
 		
@@ -203,6 +206,7 @@ mm.addAttribute("companykey",companydatalist);
 		return "postjob";
 	}
 	
+	//Post Job Mapping 
 	@RequestMapping(value = "/postjob",method = RequestMethod.POST)
 	public String postjobdata(@ModelAttribute("c1") postjob c1) {
 		

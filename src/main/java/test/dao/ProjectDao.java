@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapperResultSetExtractor;
 import test.beans.Company;
 import test.beans.Freelancer;
 import test.beans.postjob;
+import test.beans.showjobs;
 
 
 public class ProjectDao {
@@ -133,6 +134,29 @@ public class ProjectDao {
 	public void postdetails(postjob c1) {
 	
 		t1.update("insert into postjob (name,email,discription,tittle,skills,salary,role) values ('"+c1.getName()+"','"+c1.getEmail()+"','"+c1.getDicription()+"','"+c1.getTittle()+"','"+c1.getSkill()+"','"+c1.getSalary()+"','"+c1.getRole()+"')");
+		
+	}
+
+	public List<showjobs> Getalljobsdata() {
+		
+		return t1.query("select *from postjob right join company on postjob.name = company.name where postjob.name Is NOT NULL Order BY RANDOM()", new RowMapper<showjobs>() {
+
+			@Override
+			public showjobs mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				showjobs s1= new showjobs();
+				s1.setId(rs.getInt(1));
+				s1.setProfilec(rs.getString(16));
+				s1.setCompanyname(rs.getString(2));
+				s1.setPosition(rs.getString(5));
+				s1.setSkills(rs.getString(6));
+				
+				return s1;
+			}
+			
+			
+			
+		});
 		
 	}
 
