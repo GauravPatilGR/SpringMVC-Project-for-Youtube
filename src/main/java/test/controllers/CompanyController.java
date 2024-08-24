@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import test.beans.Company;
 import test.beans.postjob;
+import test.beans.postproject;
 import test.dao.ProjectDao;
 
 @Controller
@@ -214,6 +215,46 @@ mm.addAttribute("companykey",companydatalist);
 		pd.postdetails(c1);
 		
 		return "postjob";
+	}
+	
+	@RequestMapping("/postproject")
+	public String postprojectpage(HttpSession h1,ModelMap mm) {
+		
+		//Company Data
+        //value of data
+List<Company>  companydatalist=(List<Company>) h1.getAttribute("Companydata");
+         //key of companydata
+mm.addAttribute("companykey",companydatalist);
+		
+		return "postproject";
+	}
+	
+	@RequestMapping(value = "/postprojectdata",method = RequestMethod.POST)
+	public String postprojectdetails(@ModelAttribute("c1") postproject c1,@RequestParam("projectfile")MultipartFile filename) throws IOException {
+		
+		        //for file name
+				String f=filename.getOriginalFilename();
+				
+				//for file Storage
+				String path="C:\\Users\\gaura\\eclipse-workspace\\ProjectSpringMVC_Java1\\src\\main\\webapp\\files\\webimages";
+				
+				//Concate of file name and file storage
+				BufferedOutputStream bf = new BufferedOutputStream(new FileOutputStream(path+"/"+f));
+				
+				byte b []=filename.getBytes();
+				
+				bf.write(b);
+				
+				bf.close();
+				
+				c1.setProjectpdf(f);
+		
+		
+		        pd.postprojectdata(c1);
+		
+		
+		return "postproject";
+		
 	}
 	
 	

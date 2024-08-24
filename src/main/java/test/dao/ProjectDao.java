@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapperResultSetExtractor;
 import test.beans.Company;
 import test.beans.Freelancer;
 import test.beans.postjob;
+import test.beans.postproject;
 import test.beans.showjobs;
 
 
@@ -157,6 +158,12 @@ public class ProjectDao {
 			
 			
 		});
+		
+	}
+
+	public void postprojectdata(postproject c1) {
+		
+		t1.update("insert into postproject (projectd,projectt,projectpdf,projects,projectb,cname,cemail) values ('"+c1.getProjectd()+"','"+c1.getProjectt()+"','"+c1.getProjectpdf()+"','"+c1.getProjects()+"','"+c1.getProjectb()+"','"+c1.getCname()+"','"+c1.getCemail()+"')");
 		
 	}
 
