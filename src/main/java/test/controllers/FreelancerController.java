@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import test.beans.Freelancer;
+import test.beans.postproject;
 import test.beans.showjobs;
 import test.dao.ProjectDao;
 
@@ -196,6 +197,16 @@ public class FreelancerController {
 	mm.addAttribute("jobsdata",showjobsdata);
 		
 		return "Explorejobs";
+	}
+	
+	@RequestMapping("/Exploreproject")
+	public String exploreprojectpage(ModelMap mm) {
+		
+		List<postproject> projectdata =  pd.showallprojectdetails();
+		
+		mm.addAttribute("projectinfo",projectdata);
+		
+		return "Exploreproject";
 	}
 	
   

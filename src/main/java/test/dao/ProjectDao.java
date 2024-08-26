@@ -1,5 +1,6 @@
 package test.dao;
 
+import java.awt.RadialGradientPaint;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -164,6 +165,29 @@ public class ProjectDao {
 	public void postprojectdata(postproject c1) {
 		
 		t1.update("insert into postproject (projectd,projectt,projectpdf,projects,projectb,cname,cemail) values ('"+c1.getProjectd()+"','"+c1.getProjectt()+"','"+c1.getProjectpdf()+"','"+c1.getProjects()+"','"+c1.getProjectb()+"','"+c1.getCname()+"','"+c1.getCemail()+"')");
+		
+	}
+
+	public List<postproject> showallprojectdetails() {
+		
+		return t1.query("Select *from postproject", new RowMapper<postproject>() {
+
+			@Override
+			public postproject mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				
+				postproject p1= new postproject();
+				p1.setId(rs.getInt(1));
+				p1.setProjectt(rs.getString(3));
+				p1.setCname(rs.getString(7));
+				p1.setProjects(rs.getString(5));
+				p1.setProjectpdf(rs.getString(4));
+				return p1;
+			}
+			
+			
+			
+		});
 		
 	}
 
