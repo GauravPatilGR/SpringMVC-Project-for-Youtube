@@ -112,7 +112,7 @@
            
             <a href="single-project6.html" class="card-title title-link fs-16 fw-bold">${e.position}</a>
             <p class="card-text mt-3 fs-14" style="color:blue;"><b>Required Skills:</b>${e.skills}</p>
-            <center><a href="viewandApply/${e.id}"><button type="button" class="btn btn-primary">View and Apply</button></a></center>
+            <center><a href="viewandapplyjob/${e.id}"><button type="button" class="btn btn-primary">View and Apply</button></a></center>
           </div><!-- / card-body -->
         </div><!-- / card -->
       </div><!-- / col-md-6 -->
