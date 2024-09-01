@@ -222,6 +222,17 @@ public class FreelancerController {
 		return "viewandapplyjob";
 	}
 	
+	@RequestMapping(value = "/viewandapplyproject/{id}",method = RequestMethod.GET)
+	public String viewallprojectsdetails(@PathVariable int id,ModelMap mm) {
+		
+		
+	List<postproject> projectdataofid	=pd.getallprojectdatabyid(id);
+	
+	mm.addAttribute("projectdatakey",projectdataofid);
+		
+		return "viewandapplyproject";
+	}
+	
   
 	
 	
