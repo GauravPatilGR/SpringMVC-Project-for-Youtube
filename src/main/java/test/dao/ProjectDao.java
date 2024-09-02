@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapperResultSetExtractor;
 
 import test.beans.Company;
 import test.beans.Freelancer;
+import test.beans.applyjob;
 import test.beans.postjob;
 import test.beans.postproject;
 import test.beans.showjobs;
@@ -238,6 +239,12 @@ public class ProjectDao {
 			
 			
 		});
+		
+	}
+
+	public void getapplyjobdata(applyjob c1) {
+		
+		t1.update("insert into applyjob (cname,position,fname,femail,fresume) values ('"+c1.getCname()+"','"+c1.getPosition()+"','"+c1.getFname()+"','"+c1.getFemail()+"','"+c1.getFresume()+"')");
 		
 	}
 

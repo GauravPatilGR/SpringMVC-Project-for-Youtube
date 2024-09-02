@@ -53,7 +53,7 @@
                  Options
                     
                     </h1>
-                    <h2 style="color:blue;">${messagejob}</h2>
+                    <h2 style="color:white;">${messageaftersubmitjob}</h2>
                                         <div class="btn-box">
                      <a href="homef" class="btn-1">
                     Home &nbsp; <i class="fa-solid fa-house"></i>

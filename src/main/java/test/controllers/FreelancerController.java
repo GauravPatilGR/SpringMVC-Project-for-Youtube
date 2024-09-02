@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import test.beans.Freelancer;
+import test.beans.applyjob;
 import test.beans.postjob;
 import test.beans.postproject;
 import test.beans.showjobs;
@@ -212,11 +213,17 @@ public class FreelancerController {
 	}
 	
 	@RequestMapping(value = "viewandapplyjob/{id}",method = RequestMethod.GET)
-	public String viewandapplypage(@PathVariable int id,ModelMap mm) {
+	public String viewandapplypage(@PathVariable int id,ModelMap mm,HttpSession h1) {
 		
 	List<postjob> alldataofjobs= pd.getjobdata(id);
 	
 	mm.addAttribute("jobdata",alldataofjobs);
+	
+	//All Freelancer Data Present 
+	List<Freelancer> freelancerdatalist = (List<Freelancer>) h1.getAttribute("Freelanceralldata");
+	                //key
+	mm.addAttribute("freelancerdata",freelancerdatalist);
+	
 	
 		
 		return "viewandapplyjob";
@@ -231,6 +238,34 @@ public class FreelancerController {
 	mm.addAttribute("projectdatakey",projectdataofid);
 		
 		return "viewandapplyproject";
+	}
+	
+	@RequestMapping(value = "/applyforjob",method = RequestMethod.POST)
+	public String applyjobfreelancer(@ModelAttribute("c1") applyjob c1,@RequestParam("resumefile")MultipartFile filename,ModelMap mm) throws IOException {
+		
+		 //for file name
+		String f=filename.getOriginalFilename();
+		
+		//for file Storage
+		String path="C:\\Users\\gaura\\eclipse-workspace\\ProjectSpringMVC_Java1\\src\\main\\webapp\\files\\webimages";
+		
+		//Concate of file name and file storage
+		BufferedOutputStream bf = new BufferedOutputStream(new FileOutputStream(path+"/"+f));
+		
+		byte b []=filename.getBytes();
+		
+		bf.write(b);
+		
+		bf.close();
+		
+		c1.setFresume(f);
+		
+		pd.getapplyjobdata(c1);
+		
+		mm.addAttribute("messageaftersubmitjob","Congratulations your Job Application Submitted Successfully...");
+		
+		return "Explorejobs";
+		
 	}
 	
   

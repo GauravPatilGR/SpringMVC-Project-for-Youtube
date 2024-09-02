@@ -33,31 +33,31 @@
              <button class="apply-button" onclick="openForm()">Apply Now</button>
         </div>
     </div>
-    <!-- 
+    
     <div class="form-popup" id="applyForm">
-      <form id="jobApplicationForm" action="/SpringMVCPersonal_Project/applyforjob" method="post" enctype="multipart/form-data" class="form-container">
+      <form id="jobApplicationForm" action="/ProjectSpringMVC_Java1/applyforjob" method="post" enctype="multipart/form-data" class="form-container">
     <h2>Job Application</h2>
 
     <label for="companyname"><b>Company Name</b></label>
-    <input type="text" id="companyname" placeholder="Enter Your Name" name="companyname" value="${e.name}" required readonly>
+    <input type="text" id="companyname" placeholder="Enter Your Name" name="cname" value="${e.name}" required readonly>
 
-    <input type="hidden" placeholder="Enter Your Email" name="companyemail" value="${e.email}" required readonly>
+    <input type="hidden" placeholder="Enter Your Email" name="cemail" value="${e.email}" required readonly>
 
     <label for="position"><b>Position</b></label>
     <input type="text" id="position" placeholder="Enter Your Position" value="${e.tittle}" name="position" required readonly>
 
-    
+        <c:forEach items="${freelancerdata}" var="ef">
         <label for="candidatename"><b>Candidate Name</b></label>
-        <input type="text" id="candidatename" placeholder="Enter Your Name" value="${ef.fname}" name="candidatename" required>
+        <input type="text" id="candidatename" placeholder="Enter Your Name" value="${ef.name}" name="fname" required>
 
         <label for="candidateemail"><b>Candidate Email</b></label>
-        <input type="email" id="candidateemail" placeholder="Enter Your Email" value="${ef.femail}" name="candidateemail" required>
+        <input type="email" id="candidateemail" placeholder="Enter Your Email" value="${ef.email}" name="femail" required>
 
         <input type="hidden" placeholder="Enter Your ID" value="${ef.id}" name="cid">
-    
+        </c:forEach>
 
     <label for="resume"><b>Resume</b></label>
-    <input type="file" id="resume" name="resume" accept=".pdf" required>
+    <input type="file" id="resume" name="resumefile" accept=".pdf" required>
 
     <input type="hidden" placeholder="Enter Your Status" name="status" value="send" required readonly>
 
@@ -66,7 +66,7 @@
 </form>
     </div>
    
-     -->
+     
    
    
 <div class="be-comment-block">
