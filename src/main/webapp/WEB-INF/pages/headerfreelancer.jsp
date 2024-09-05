@@ -75,9 +75,9 @@
               <li class="nav-item active">
                 <a class="nav-link" href="homef"><i class="fa-solid fa-house"></i> &nbsp;Home</a>
               </li>
-               <c:forEach items="${kkk}" var="e">
+              <c:forEach items="${freelancerdata}" var="e">
               <li class="nav-item active">
-                <a class="nav-link" href="freelancerapplication/${e.femail}"><i class="fa-regular fa-calendar-check"></i> &nbsp;My Applications</a>
+                <a class="nav-link" href="myapplication/${e.email}"><i class="fa-regular fa-calendar-check"></i> &nbsp;My Applications</a>
               </li> </c:forEach>
             
               <li class="nav-item">

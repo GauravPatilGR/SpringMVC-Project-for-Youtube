@@ -1,18 +1,20 @@
 package test.beans;
 
-public class applyjob {
+public class applyproject {
 	
 	private int id;
 	
+	private String projectt;
+	
 	private String cname;
 	
-	private String position;
+	private String cemail;
 	
 	private String fname;
 	
 	private String femail;
 	
-	private String fresume;
+	private String resumef;
 	
 	private String status;
 
@@ -32,6 +34,14 @@ public class applyjob {
 		this.id = id;
 	}
 
+	public String getProjectt() {
+		return projectt;
+	}
+
+	public void setProjectt(String projectt) {
+		this.projectt = projectt;
+	}
+
 	public String getCname() {
 		return cname;
 	}
@@ -40,12 +50,12 @@ public class applyjob {
 		this.cname = cname;
 	}
 
-	public String getPosition() {
-		return position;
+	public String getCemail() {
+		return cemail;
 	}
 
-	public void setPosition(String position) {
-		this.position = position;
+	public void setCemail(String cemail) {
+		this.cemail = cemail;
 	}
 
 	public String getFname() {
@@ -64,12 +74,12 @@ public class applyjob {
 		this.femail = femail;
 	}
 
-	public String getFresume() {
-		return fresume;
+	public String getResumef() {
+		return resumef;
 	}
 
-	public void setFresume(String fresume) {
-		this.fresume = fresume;
+	public void setResumef(String resumef) {
+		this.resumef = resumef;
 	}
 
 }

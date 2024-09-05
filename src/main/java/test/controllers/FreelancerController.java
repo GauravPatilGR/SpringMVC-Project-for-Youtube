@@ -24,6 +24,8 @@ import test.beans.postjob;
 import test.beans.postproject;
 import test.beans.showjobs;
 import test.dao.ProjectDao;
+import test.beans.applyproject;
+
 
 @Controller
 public class FreelancerController {
@@ -230,12 +232,17 @@ public class FreelancerController {
 	}
 	
 	@RequestMapping(value = "/viewandapplyproject/{id}",method = RequestMethod.GET)
-	public String viewallprojectsdetails(@PathVariable int id,ModelMap mm) {
+	public String viewallprojectsdetails(@PathVariable int id,ModelMap mm,HttpSession h1) {
 		
 		
 	List<postproject> projectdataofid	=pd.getallprojectdatabyid(id);
 	
 	mm.addAttribute("projectdatakey",projectdataofid);
+	
+	//All Freelancer Data Present 
+		List<Freelancer> freelancerdatalist = (List<Freelancer>) h1.getAttribute("Freelanceralldata");
+		                //key
+		mm.addAttribute("freelancerdata",freelancerdatalist);
 		
 		return "viewandapplyproject";
 	}
@@ -266,6 +273,51 @@ public class FreelancerController {
 		
 		return "Explorejobs";
 		
+	}
+	
+	
+	@RequestMapping(value = "/applyforproject",method = RequestMethod.POST)
+	public String applyproject(@ModelAttribute("c1") applyproject c1,@RequestParam("resumefile") MultipartFile filename,ModelMap mm) throws IOException{
+		
+		 //for file name
+		String f=filename.getOriginalFilename();
+		
+		//for file Storage
+		String path="C:\\Users\\gaura\\eclipse-workspace\\ProjectSpringMVC_Java1\\src\\main\\webapp\\files\\webimages";
+		
+		//Concate of file name and file storage
+		BufferedOutputStream bf = new BufferedOutputStream(new FileOutputStream(path+"/"+f));
+		
+		byte b []=filename.getBytes();
+		
+		bf.write(b);
+		
+		bf.close();
+		
+		c1.setResumef(f);
+		
+		pd.applyforproject(c1);
+		
+		
+		mm.addAttribute("messageaftersubmitproject","Congratulations your project Application Submitted Successfully...");
+		
+		return "Exploreproject";
+	}
+	
+	@RequestMapping(value = "/myapplication/{email}")
+	public String myapplication (@PathVariable String email,ModelMap mm) {
+		
+		
+		//This is For Showing Job Application
+		List<applyjob> myapplicationdata= pd.getmyapplicationdata(email);
+		
+		mm.addAttribute("myapplicationdetails",myapplicationdata);
+		
+	   List<applyproject> myprojectapplicationdata	=pd.getprojectapplicationdata(email);
+	   
+	   mm.addAttribute("myprojectapplications",myprojectapplicationdata);
+		
+		return "myapplication";
 	}
 	
   

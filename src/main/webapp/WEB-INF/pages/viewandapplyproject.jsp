@@ -64,40 +64,40 @@
 	</form>
 </div>
 </div>
-</c:forEach>
+
      
           
              <button class="apply-button" onclick="openForm()">Apply Now</button>
         </div>
     </div>
     
-    <!--  
+    
     
       <div class="form-popup" id="applyForm">
-       <form id="projectApplicationForm" action="/SpringMVCPersonal_Project/applyforproject" method="post" enctype="multipart/form-data" class="form-container">
-    <h2>Job Application</h2>
+       <form id="projectApplicationForm" action="/ProjectSpringMVC_Java1/applyforproject" method="post" enctype="multipart/form-data" class="form-container">
+    <h2>Project Application</h2>
 
     <label for="projectname"><b>Project Name</b></label>
-    <input type="text" id="projectname" placeholder="Enter Project Name" name="projectname" value="${ef.projectt}" required readonly>
+    <input type="text" id="projectname" placeholder="Enter Project Name" name="projectt" value="${e.projectt}" required readonly>
 
     <label for="projectcompany"><b>Project Organization</b></label>
-    <input type="text" id="projectcompany" placeholder="Enter Project Organization" name="projectcompany" value="${ef.projectc}" required readonly>
+    <input type="text" id="projectcompany" placeholder="Enter Project Organization" name="cname" value="${e.cname}" required readonly>
 
     <label for="projectcompanyemail"><b>Project Organization Email</b></label>
-    <input type="email" id="projectcompanyemail" placeholder="Enter Project Organization Email" name="projectcompanyemail" value="${ef.projecte}" required readonly>
+    <input type="email" id="projectcompanyemail" placeholder="Enter Project Organization Email" name="cemail" value="${e.cemail}" required readonly>
 
-    <c:forEach items="${profile}" var="e">
+        <c:forEach items="${freelancerdata}" var="ef">
         <label for="candidatename"><b>Candidate Name</b></label>
-        <input type="text" id="candidatename" placeholder="Enter Candidate Name" name="candidatename" value="${e.fname}" required>
+        <input type="text" id="candidatename" placeholder="Enter Candidate Name" name="fname" value="${ef.name}" required>
 
         <label for="candidateemail"><b>Candidate Email</b></label>
-        <input type="email" id="candidateemail" placeholder="Enter Candidate Email" name="candidateemail" value="${e.femail}" required>
+        <input type="email" id="candidateemail" placeholder="Enter Candidate Email" name="femail" value="${ef.email}" required>
 
         <input type="hidden" name="cdid" value="${e.id}">
-    </c:forEach>
+         </c:forEach>
 
     <label for="resume"><b>Resume</b></label>
-    <input type="file" id="resume" name="resume" accept=".pdf" required>
+    <input type="file" id="resume" name="resumefile" accept=".pdf" required>
 
     <input type="hidden" name="status" value="send">
 
@@ -105,6 +105,8 @@
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
 </form>
     </div>
+    
+    </c:forEach>
    
    
    <script>
@@ -141,7 +143,7 @@ function closeForm() {
 }
 </script>
    
-   -->
+   
    
 
 

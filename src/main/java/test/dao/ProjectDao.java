@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.RowMapperResultSetExtractor;
 import test.beans.Company;
 import test.beans.Freelancer;
 import test.beans.applyjob;
+import test.beans.applyproject;
 import test.beans.postjob;
 import test.beans.postproject;
 import test.beans.showjobs;
@@ -244,8 +245,62 @@ public class ProjectDao {
 
 	public void getapplyjobdata(applyjob c1) {
 		
-		t1.update("insert into applyjob (cname,position,fname,femail,fresume) values ('"+c1.getCname()+"','"+c1.getPosition()+"','"+c1.getFname()+"','"+c1.getFemail()+"','"+c1.getFresume()+"')");
+		t1.update("insert into applyjob (cname,position,fname,femail,fresume,status) values ('"+c1.getCname()+"','"+c1.getPosition()+"','"+c1.getFname()+"','"+c1.getFemail()+"','"+c1.getFresume()+"','"+c1.getStatus()+"')");
 		
+	}
+
+	public void applyforproject(applyproject c1) {
+		
+		t1.update("insert into applyproject (projectt,cname,cemail,fname,femail,resumef,status) values ('"+c1.getProjectt()+"','"+c1.getCname()+"','"+c1.getCemail()+"','"+c1.getFname()+"','"+c1.getFemail()+"','"+c1.getResumef()+"','"+c1.getStatus()+"')");
+		
+	}
+
+	public List<applyjob> getmyapplicationdata(String email) {
+		
+		return t1.query("select *from applyjob where femail Like '%"+email+"%'", new RowMapper<applyjob>() {
+
+			@Override
+			public applyjob mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+			     applyjob a1= new applyjob();
+			     a1.setId(rs.getInt(1));
+			     a1.setCname(rs.getString(2));
+			     a1.setPosition(rs.getString(3));
+			     a1.setFname(rs.getString(4));
+			     a1.setFemail(rs.getString(5));
+			     a1.setFresume(rs.getString(6));
+			     a1.setStatus(rs.getString(7));
+				
+				return a1;
+			}
+			
+			
+			
+		});
+	}
+
+	public List<applyproject> getprojectapplicationdata(String email) {
+		
+		return t1.query("select *from applyproject where femail Like '%"+email+"%'", new RowMapper<applyproject>() {
+
+			@Override
+			public applyproject mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				applyproject a1= new applyproject();
+				a1.setId(rs.getInt(1));
+				a1.setProjectt(rs.getString(2));
+				a1.setCname(rs.getString(3));
+				a1.setCemail(rs.getString(4));
+				a1.setFname(rs.getString(5));
+				a1.setFemail(rs.getString(6));
+				a1.setResumef(rs.getString(7));
+				a1.setStatus(rs.getString(8));
+				
+				return a1;
+			}
+			
+			
+		});
 	}
 
 	
