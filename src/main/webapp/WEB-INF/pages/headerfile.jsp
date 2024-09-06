@@ -80,24 +80,22 @@
               </li>
               
               
-                <c:forEach items="${kk}" var="ef">
+                <c:forEach items="${companykey}" var="e">
               <li class="nav-item">
-                <form action="getjobdata" method="post">
-                <input type="hidden" name="email" value="${ef.email}">
                
-               <button type="submit" style="background-color: transparent !important; border:none; color:#fff;"><i class="fa-solid fa-location-arrow" ></i> &nbsp;Manage Jobs and Projects</button>
-                </form>
+               <a class="nav-link" href="viewallfreelancer"><i class="fa-solid fa-users"></i>&nbsp;Manage Jobs and Projects</a>
+                
               </li>
                <li class="nav-item">
-                <form action="getcandidatedata" method="post">
-                <input type="hidden" name="email" value="${ef.email}">
+                
+                <a class="nav-link" href="viewcadidatesapplicartion/${e.name}"><i class="fa-solid fa-users"></i>&nbsp;Candidates Applications</a>
                
-               <button type="submit" style="background-color: transparent !important; border:none; color:#fff;"><i class="fa-solid fa-file-contract"></i> &nbsp;Candidates Applications</button>
-                </form>
-              </li>
+
+               
+              </li></c:forEach>
               
               
-               </c:forEach>
+              
               
               
              

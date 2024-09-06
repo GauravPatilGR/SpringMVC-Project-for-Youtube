@@ -303,6 +303,51 @@ public class ProjectDao {
 		});
 	}
 
+	public List<applyjob> getapplicationdata(String name) {
+		
+		return t1.query("select *from applyjob where cname Like '%"+name+"%'", new RowMapper<applyjob>() {
+
+			@Override
+			public applyjob mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				applyjob a1= new applyjob();
+			     a1.setId(rs.getInt(1));
+			     a1.setCname(rs.getString(2));
+			     a1.setPosition(rs.getString(3));
+			     a1.setFname(rs.getString(4));
+			     a1.setFemail(rs.getString(5));
+			     a1.setFresume(rs.getString(6));
+			     a1.setStatus(rs.getString(7));
+				return a1;
+			}
+			
+			
+		} );
+		
+	}
+
+	public List<applyproject> getprojectapplicationcompany(String name) {
+		
+		return t1.query("select *from applyproject where cname Like '%"+name+"%'", new RowMapper<applyproject>() {
+
+			@Override
+			public applyproject mapRow(ResultSet rs, int rowNum) throws SQLException {
+				applyproject a1= new applyproject();
+				a1.setId(rs.getInt(1));
+				a1.setProjectt(rs.getString(2));
+				a1.setCname(rs.getString(3));
+				a1.setCemail(rs.getString(4));
+				a1.setFname(rs.getString(5));
+				a1.setFemail(rs.getString(6));
+				a1.setResumef(rs.getString(7));
+				a1.setStatus(rs.getString(8));
+				return a1;
+			}});
+		
+	}
+
+	
+
 	
 
 }
