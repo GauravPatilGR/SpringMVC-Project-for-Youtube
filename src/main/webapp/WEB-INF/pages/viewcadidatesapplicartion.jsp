@@ -21,11 +21,11 @@
 <br>
 <br>
 
- 
+ <c:forEach items="${companykey}" var="ef">
  <div class="button-container">
-        <a href="accptedjobapplications/${ec.email}"><button class="btn accepted" style="color:#fff;">Accepted Applications &nbsp;<i class="fa-solid fa-clipboard-check"></i></button></a>
-        <a href="rejectedcandidate/${ec.email}"><button class="btn rejected" style="color:#fff;">Rejected Applications &nbsp; <i class="fa-regular fa-circle-xmark"></i></button></a>
- </div>
+        <a href="/ProjectSpringMVC_Java1/accptedjobprojectapplication/${ef.name}"><button class="btn accepted" style="color:#fff;">Accepted Applications &nbsp;<i class="fa-solid fa-clipboard-check"></i></button></a>
+        <a href="/ProjectSpringMVC_Java1/rejectedjobprojectapplication/${ef.name}"><button class="btn rejected" style="color:#fff;">Rejected Applications &nbsp; <i class="fa-regular fa-circle-xmark"></i></button></a>
+ </div></c:forEach>
 
    <h2>Latest Jobs Applications&nbsp; <i class="fa-solid fa-user-check"></i></h2>
 <table>
@@ -71,7 +71,8 @@
                
                 
                 <td> 
-                 <form action="updatestatus" method="post">
+                
+                 <form action="/ProjectSpringMVC_Java1/updatestatusofjob" method="post">
                  <input type="hidden" value="${e.id}" name="id">
                  <select id="status" name="status"  required>
                  <option value="${e.status}" style="color:blue;">Current:${e.status}</option>
@@ -82,6 +83,7 @@
                 <br>
                 <button type="submit">Update Status</button>
                 </form>
+                
                 </td>
                   
               
@@ -104,7 +106,7 @@
 <br>
 <br>
 
-<h2>Projects &nbsp;<i class="fa-solid fa-briefcase"></i></h2>
+<h2>Projects  &nbsp;<i class="fa-solid fa-briefcase"></i></h2>
 <table>
 
     <thead>
@@ -149,7 +151,7 @@
                 
                 
                 <td> 
-                 <form action="updatestatusproject" method="post">
+                 <form action="/ProjectSpringMVC_Java1/updatestatusofproject" method="post">
                  <input type="hidden" value="${ef.id}" name="id">
                  <select id="status" name="status"  required>
                  <option value="${ef.status}" style="color:blue;">Current:${ef.status}</option>

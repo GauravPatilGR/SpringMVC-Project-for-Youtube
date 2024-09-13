@@ -305,7 +305,7 @@ public class ProjectDao {
 
 	public List<applyjob> getapplicationdata(String name) {
 		
-		return t1.query("select *from applyjob where cname Like '%"+name+"%'", new RowMapper<applyjob>() {
+		return t1.query("select *from applyjob where cname Like '%"+name+"%' and status='send'", new RowMapper<applyjob>() {
 
 			@Override
 			public applyjob mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -326,9 +326,10 @@ public class ProjectDao {
 		
 	}
 
+	//Get all Candidates Application data
 	public List<applyproject> getprojectapplicationcompany(String name) {
 		
-		return t1.query("select *from applyproject where cname Like '%"+name+"%'", new RowMapper<applyproject>() {
+		return t1.query("select *from applyproject where cname Like '%"+name+"%' and status='send' ", new RowMapper<applyproject>() {
 
 			@Override
 			public applyproject mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -345,6 +346,116 @@ public class ProjectDao {
 			}});
 		
 	}
+
+	public void updatejobstatus(applyjob c1) {
+		
+		t1.update("update applyjob set status='"+c1.getStatus()+"' where id='"+c1.getId()+"'");
+		
+	}
+
+	public void updateprojectstatus(applyproject c1) {
+	
+		t1.update("update applyproject set status='"+c1.getStatus()+"' where id='"+c1.getId()+"'");
+		
+	}
+
+	public List<applyjob> getaccptedjobapplicationdata(String cname) {
+		
+		return t1.query("select *from applyjob where cname Like '%"+cname+"%' and status='Accepted'", new RowMapper<applyjob>() {
+
+			@Override
+			public applyjob mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				applyjob a1= new applyjob();
+			     a1.setId(rs.getInt(1));
+			     a1.setCname(rs.getString(2));
+			     a1.setPosition(rs.getString(3));
+			     a1.setFname(rs.getString(4));
+			     a1.setFemail(rs.getString(5));
+			     a1.setFresume(rs.getString(6));
+			     a1.setStatus(rs.getString(7));
+				return a1;
+			}
+			
+			
+		});
+	}
+
+	public List<applyproject> getaccptedprojectapplication(String cname) {
+		
+		return t1.query("select *from applyproject where cname Like '%"+cname+"%' and status='Accepted'", new RowMapper<applyproject>() {
+
+			@Override
+			public applyproject mapRow(ResultSet rs, int rowNum) throws SQLException {
+				applyproject a1= new applyproject();
+				a1.setId(rs.getInt(1));
+				a1.setProjectt(rs.getString(2));
+				a1.setCname(rs.getString(3));
+				a1.setCemail(rs.getString(4));
+				a1.setFname(rs.getString(5));
+				a1.setFemail(rs.getString(6));
+				a1.setResumef(rs.getString(7));
+				a1.setStatus(rs.getString(8));
+				
+				return a1;
+			}
+			
+			
+		});
+		
+	}
+
+	public List<applyjob> showrejectedjobapplication(String cname) {
+		
+		return t1.query("select *from applyjob where cname Like '%"+cname+"%' and status='Rejected'", new RowMapper<applyjob>() {
+
+			@Override
+			public applyjob mapRow(ResultSet rs, int rowNum) throws SQLException {
+				applyjob a1= new applyjob();
+			     a1.setId(rs.getInt(1));
+			     a1.setCname(rs.getString(2));
+			     a1.setPosition(rs.getString(3));
+			     a1.setFname(rs.getString(4));
+			     a1.setFemail(rs.getString(5));
+			     a1.setFresume(rs.getString(6));
+			     a1.setStatus(rs.getString(7));
+				return a1;
+			}
+			
+			
+		});
+		
+	}
+
+	public List<applyproject> showrejectedprojectappplication(String cname) {
+		
+		return t1.query("select *from applyproject where cname Like '%"+cname+"%' and status='Rejected'", new RowMapper<applyproject>() {
+
+			@Override
+			public applyproject mapRow(ResultSet rs, int rowNum) throws SQLException {
+			
+				applyproject a1= new applyproject();
+				a1.setId(rs.getInt(1));
+				a1.setProjectt(rs.getString(2));
+				a1.setCname(rs.getString(3));
+				a1.setCemail(rs.getString(4));
+				a1.setFname(rs.getString(5));
+				a1.setFemail(rs.getString(6));
+				a1.setResumef(rs.getString(7));
+				a1.setStatus(rs.getString(8));
+				
+				return a1;
+				
+				
+			}
+			
+		});
+		
+	}
+
+	
+
+	
 
 	
 

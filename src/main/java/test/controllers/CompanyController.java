@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.SqlReturnResultSet;
 import org.springframework.stereotype.Controller;
@@ -260,8 +261,9 @@ mm.addAttribute("companykey",companydatalist);
 		
 	} 
 	
+	//View All Candidates data
 	@RequestMapping("/viewcadidatesapplicartion/{name}")
-	public String viewcadidatesapplicartion(@PathVariable String name,ModelMap mm) {
+	public String viewcadidatesapplicartion(@PathVariable String name,ModelMap mm,HttpSession h1) {
 	
     //Show Jobs Application Applied By candidates
 	List<applyjob> cadidatesalldata	=pd.getapplicationdata(name);
@@ -273,10 +275,93 @@ mm.addAttribute("companykey",companydatalist);
 	List<applyproject> projectapplicationdata= pd.getprojectapplicationcompany(name);
 	
 	mm.addAttribute("projectapplicationdata",projectapplicationdata);
+	
+	
+	//Company Data
+    //value of data
+   List<Company>  companydatalist=(List<Company>) h1.getAttribute("Companydata");
+     //key of companydata
+   mm.addAttribute("companykey",companydatalist);
 		
 		
 		return "viewcadidatesapplicartion";
 	}
+	
+	////Status of Job
+	@RequestMapping(value = "/updatestatusofjob",method = RequestMethod.POST)
+	public String updatejonstatus(@ModelAttribute("c1") applyjob c1,ModelMap mm) {
+		
+		pd.updatejobstatus(c1);
+		
+		mm.addAttribute("messageupdatejob","Job Status Updated");
+		
+		
+		return "messagecompany";
+		
+	}
+	
+	//Status of Project
+	@RequestMapping(value = "/updatestatusofproject",method = RequestMethod.POST)
+	public String updateprojectstatus(@ModelAttribute("c1") applyproject c1,ModelMap mm) {
+		
+		pd.updateprojectstatus(c1);
+		
+		mm.addAttribute("messageupdateproject","project Status Updated");
+		
+		return "messagecompany";
+		
+	}
+	
+	@RequestMapping("/messagecompany")
+	public String messagepage() {
+		
+		return "messagecompany";
+	}
+	
+	
+	
+	//Show Accepted job & Project Application
+	@RequestMapping("/accptedjobprojectapplication/{cname}")
+	public String accptedjobprojectapplication(@PathVariable String cname,ModelMap mm) {
+	
+		
+	//Job Appplication Data
+	List<applyjob> accptedjobapplicationdata=	pd.getaccptedjobapplicationdata(cname);
+	
+	mm.addAttribute("jobapplicationdata",accptedjobapplicationdata);
+	
+	
+	//project Application data
+	
+	 List<applyproject> accptedprojectapplicationdata    = pd.getaccptedprojectapplication(cname);
+	 
+	 mm.addAttribute("projectapplication",accptedprojectapplicationdata);
+	
+	
+		
+		return "accptedjobprojectapplication";
+	}
+	
+	//Show Rejected job & Project Application
+	@RequestMapping("/rejectedjobprojectapplication/{cname}")
+	public String rejectedjobandprojectdata(@PathVariable String cname,ModelMap mm) {
+	
+    //Job Appplication Data
+	List<applyjob> getallrejectedjobapplication	=pd.showrejectedjobapplication(cname);
+	
+	mm.addAttribute("getrejectedjob",getallrejectedjobapplication);
+	
+	
+    List<applyproject>getallrejectedprojectapplication =pd.showrejectedprojectappplication(cname);
+    
+    mm.addAttribute("getrejectedproject",getallrejectedprojectapplication);
+		
+		
+		return "rejectedjobprojectapplication";
+		
+	}
+	
+	
 	
 	
 	
