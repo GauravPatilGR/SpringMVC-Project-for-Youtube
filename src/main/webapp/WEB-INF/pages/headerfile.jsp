@@ -83,7 +83,7 @@
                 <c:forEach items="${companykey}" var="e">
               <li class="nav-item">
                
-               <a class="nav-link" href="viewallfreelancer"><i class="fa-solid fa-users"></i>&nbsp;Manage Jobs and Projects</a>
+               <a class="nav-link" href="historyjobandproject/${e.name}"><i class="fa-solid fa-users"></i>&nbsp;Manage Jobs and Projects</a>
                 
               </li>
                <li class="nav-item">

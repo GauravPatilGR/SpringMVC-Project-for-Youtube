@@ -361,6 +361,28 @@ mm.addAttribute("companykey",companydatalist);
 		
 	}
 	
+	@RequestMapping("/historyjobandproject/{name}")
+	public String historyofjobandproject(@PathVariable String name,ModelMap mm) {
+		
+		//job
+	List<postjob>	 postjobdataList=pd.getjobdata(name);
+	
+	mm.addAttribute("jobdata",postjobdataList);
+	
+	
+	//project
+     List<postproject> postprojectlist=	pd.getprojectdata(name);
+     
+     mm.addAttribute("projectdata",postprojectlist);
+	
+	
+		
+		return "historyjobandproject";
+	}
+	
+	
+	
+	
 	
 	
 	

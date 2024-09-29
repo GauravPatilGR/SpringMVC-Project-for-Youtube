@@ -453,6 +453,55 @@ public class ProjectDao {
 		
 	}
 
+	public List<postjob> getjobdata(String name) {
+		
+		return t1.query("select *from postjob where name LIKE '%"+name+"%'", new RowMapper<postjob>() {
+
+			@Override
+			public postjob mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				postjob p1= new postjob();
+				p1.setId(rs.getInt(1));
+				p1.setDicription(rs.getString(4));
+				p1.setTittle(rs.getString(5));
+				p1.setRole(rs.getString(8));
+				p1.setSalary(rs.getString(7));
+				p1.setSkill(rs.getString(6));
+				p1.setName(rs.getString(2));
+				p1.setEmail(rs.getString(3));
+				return p1;
+			}
+			
+			
+		});
+		
+	}
+
+	public List<postproject> getprojectdata(String name) {
+		
+		return t1.query("select *from postproject where cname LIKE '%"+name+"%'", new RowMapper<postproject>() {
+
+			@Override
+			public postproject mapRow(ResultSet rs, int rowNum) throws SQLException {
+				postproject p1= new postproject();
+				p1.setId(rs.getInt(1));
+				p1.setProjectd(rs.getString(2));
+				p1.setProjectt(rs.getString(3));
+				p1.setCname(rs.getString(7));
+				p1.setProjects(rs.getString(5));
+				p1.setProjectb(rs.getString(6));
+				p1.setProjectpdf(rs.getString(4));
+				p1.setCemail(rs.getString(8));
+				
+				return p1;
+			}
+			
+			
+		});
+		
+	}
+
+	
 	
 
 	
