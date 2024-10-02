@@ -501,6 +501,33 @@ public class ProjectDao {
 		
 	}
 
+	public List<postjob> getjobdataofcompany(int id) {
+		
+		return t1.query("select *from postjob where id='"+id+"'", new RowMapper<postjob>() {
+
+			@Override
+			public postjob mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				
+				
+				postjob p1= new postjob();
+				p1.setId(rs.getInt(1));
+				p1.setDicription(rs.getString(4));
+				p1.setTittle(rs.getString(5));
+				p1.setRole(rs.getString(8));
+				p1.setSalary(rs.getString(7));
+				p1.setSkill(rs.getString(6));
+				p1.setName(rs.getString(2));
+				p1.setEmail(rs.getString(3));
+				return p1;
+			}
+			
+			
+			
+		});
+		
+	}
+
 	
 	
 

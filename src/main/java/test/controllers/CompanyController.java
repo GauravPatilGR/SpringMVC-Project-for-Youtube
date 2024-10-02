@@ -381,6 +381,18 @@ mm.addAttribute("companykey",companydatalist);
 	}
 	
 	
+	@RequestMapping("/editjobdata/{id}")
+	public String editjobdetails(@PathVariable int id,ModelMap mm) {
+		
+	List<postjob> jobdetails=	pd.getjobdataofcompany(id);
+	
+	mm.addAttribute("jobdetailsofcompany",jobdetails);
+		
+		return "editjobdetails";
+		
+	}
+	
+	
 	
 	
 	

@@ -45,7 +45,7 @@
                 <td data-label="Date">${e.name}</td>
                 <td data-label="Date">${e.email}</td>
                 <td data-label="Date">
-                 <a href="editjob/${e.id}">Edit &nbsp;<i class="fa-regular fa-pen-to-square"></i></a>
+                 <a href="/ProjectSpringMVC_Java1/editjobdata/${e.id}">Edit &nbsp;<i class="fa-regular fa-pen-to-square"></i></a>
                  <br>
                  <br>
                  <br>
